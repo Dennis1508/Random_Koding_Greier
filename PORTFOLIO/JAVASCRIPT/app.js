@@ -70,8 +70,79 @@ const lightbox = document.querySelector(".lightbox");
 const lightboxImg = lightbox.querySelector("img");
 
 
+lightbox.addEventListener("click", function () {
+    if (Event.target != lightboxImg) {
+        lightbox.classList.remove("show");
+        lightbox.classList.add("hide");
+    }
+});
 
 
+closeLightbox.addEventListener("click", function () {
+    lightbox.classList.remove("show");
+    lightbox.classList.add("hide");
+});
+
+
+const gallery = document.querySelector(".gallery");
+
+const galleryItem = document.querySelectorAll(".item");
+
+galleryItem.forEach(function (element) {
+    element.querySelector(".fa-plus").addEventListener("click", function () {
+        lightbox.classList.remove("hide");
+        lightbox.classList.add("show");
+        lightboxImg.src = element.querySelector("img").getAttribute("src");
+    });
+});
+
+
+//Testimonials Slider
+
+
+const sliderContainer = document.querySelector(".testimonials-box");
+const slider = sliderContainer.children;
+const containerWidth = sliderContainer.offsetWidth;
+
+const margin = 30;
+let itemPerSlide = 0;
+let sliderDot;
+
+const responsive = [{
+    breakPoint: {
+      width: 0,
+      item: 1,
+    },
+  },
+  {
+    breakPoint: {
+      width: 991,
+      item: 2,
+    },
+  },
+];
+
+function load() {
+    for(let i = 0; i < responsive.length; i++){
+        if (window.innerWidth > responsive[i].breakPoint.width){
+            itemPerSlide = responsive[i].breakPoint.item;
+        }
+    }
+    start();
+}
+
+
+function start () {
+    totalWidth = 0;
+    for (let i = 0; i < slider.length; i++){
+        slider[i].style.width = containerWidth / itemPerSlide - margin + "px";
+        slider[i].style.margin = margin / 2 + "px";
+        totalWidth += containerWidth / itemPerSlide;
+    }
+    sliderContainer.style.width = totalWidth + "px";
+
+    sliderDot = Math.ceil(slider.length / itemPerSlide);
+}
 
 
 
