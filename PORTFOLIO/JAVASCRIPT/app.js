@@ -142,8 +142,62 @@ function start () {
     sliderContainer.style.width = totalWidth + "px";
 
     sliderDot = Math.ceil(slider.length / itemPerSlide);
+
+    for (let i = 0; i < sliderDot; i++){
+        const div = document.createElement("div");
+        div.id = i;
+        div.setAttribute("onclick", "controlSlide(this)");
+        if (i === 0){
+            div.classList.add("active");
+        }
+        document.querySelector(".slider").appendChild(div);
+    }
 }
 
+
+let currentSlide = 0;
+let autoSlide = 0;
+
+
+function controlSlide(element) {
+    clearInterval(timer);
+    timer = setInterval(autoPlay, 5000);
+    autoSlide = element.id;
+    currentSlide = element.id;
+    changeSlide(currentSlide);
+}
+
+function changeSlide(currentSlide) {
+    controlButton = document.querySelector(".slider").children;
+    for (let i = 0; i < controlButton.length; i++){
+        controlButton[i].classList.remove("active");
+    }
+    controlButton[currentSlide].classList.add("active");
+
+
+    sliderContainer.style.marginLeft = - (containerWidth * currentSlide) + "px";
+}
+
+
+
+function autoPlay() {
+    if (autoSlide === sliderDot - 1){
+        autoslide = 0;
+    } else {
+        autoSlide++;
+    }
+    changeSlide(autoSlide);
+}
+let timer = setInterval(autoPlay, 5000);
+
+window.onload = load();
+
+
+// Footer Year
+
+
+let year = document.getElementById("year");
+year.innerHTML = new Date().getFullYear();
 
 
 
