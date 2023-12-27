@@ -65,6 +65,9 @@ for (let i = 0; i < filterBtn.length; i++) {
     });
 }
 
+const closeLightbox = document.querySelector(".close-lightbox");
+const lightbox = document.querySelector(".lightbox");
+const lightboxImg = lightbox.querySelector("img");
 
 
 
