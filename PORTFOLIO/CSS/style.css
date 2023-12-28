@@ -360,7 +360,7 @@ form btn2 {
 
 /* -------------------- CSS for small screen --------------------*/
 
-nav.fas {
+nav .fa-solid {
     display: none;
 }
 
