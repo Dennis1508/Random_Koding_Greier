@@ -392,6 +392,7 @@ nav .fa-solid {
         height: 100vh;
         padding-top: 50px;
         z-index: 2;
+        transition: right 0.5s;
 
     }
 
@@ -405,5 +406,28 @@ nav .fa-solid {
         top: 25px;
         left: 25px;
         cursor: pointer;
+    }
+
+    .sub-title {
+        font-size: 40px;
+    }
+
+    .about-col-1,
+    .about-col-2 {
+        flex-basis: 100%;
+    }
+
+    .about-col-1 {
+        margin-bottom: 30px;
+    }
+
+    .about-col-2 {
+        font-size: 14px;
+    }
+
+    .tab-links {
+        font-size: 16px;
+        margin-right: 20px;
+
     }
 }
