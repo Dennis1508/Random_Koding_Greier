@@ -27,9 +27,20 @@ Operator precedence
 4. addition & subtraction
 */
 
-let result = 1 + 2 * 3 + 4 ** 2;
+/* How to accept user input
 
-console.log(result);
+1. EASY WAY = window prompt
+2. PROFESSIONAL WAY = HTML textbox 
+*/
+
+let username;
+
+document.getElementById("mySubmit").onclick = function () {
+    username = document.getElementById("myText").value;
+    document.getElementById("myH1").textContent = 'Hello' + ${ username };
+};
+
+
 
 
 
