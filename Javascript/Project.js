@@ -101,11 +101,19 @@ const spin = () => {
 
 };
 
-const reels = spin();
+
+const transpose = (reels) => {
+    const rows = [];
+}
+
+
+
+
 console.log(reels);
 let balance = deposit();
 const numberOfLines = getNumberOfLines();
 const bet = getBet(balance, numberOfLines);
+const reels = spin();
 
 
 
