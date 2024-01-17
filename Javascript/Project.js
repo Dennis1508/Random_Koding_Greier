@@ -85,10 +85,11 @@ const spin = () => {
     }
 
 
-    const reels = [[], [], []];
+    const reels = [];
     for (let i = 0; i < COLS; i++) {
+        reels.push([]);
         const reelSymbols = [...symbols];
-        for (let j = 0; j < ROWS; i++) {
+        for (let j = 0; j < ROWS; j++) {
             const randomIndex = Math.floor(Math.random() * reelSymbols.length);
             const selectedSymbol = reelSymbols[randomIndex];
             reels[i].push(selectedSymbol);
@@ -155,16 +156,36 @@ const getWinnings = (rows, bet, lines) => {
 };
 
 
+const game = () => {
+    let balance = deposit();
 
 
-let balance = deposit();
-const numberOfLines = getNumberOfLines();
-const bet = getBet(balance, numberOfLines);
-const reels = spin();
-const rows = transpose(reels);
-printRows(rows);
-const winnings = getWinnings(rows, bet, numberOfLines);
-console.log("You won, $" + winnings.toString());
+
+    while (true) {
+        console.log("You have a balance of $" + balance);
+        const numberOfLines = getNumberOfLines();
+        const bet = getBet(balance, numberOfLines);
+        balance -= bet * numberOfLines;
+        const reels = spin();
+        const rows = transpose(reels);
+        printRows(rows);
+        const winnings = getWinnings(rows, bet, numberOfLines);
+        balance += winnings;
+        console.log("You won, $" + winnings.toString());
+
+
+    }
+};
+
+
+
+
+
+
+
+game();
+
+
 
 
 
